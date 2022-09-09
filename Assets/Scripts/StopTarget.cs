@@ -22,7 +22,9 @@ public class StopTarget : MonoBehaviour
 
     public void PressToStopTarget()
     {
-        _targetScript.isPressed = true;
+        _targetScript.isPressed = true;     // Stop the target from movement
+        _arrowFollowTarget.FollowTheTarget();   // Start the arrow going to the target;
+
     }
 
 }

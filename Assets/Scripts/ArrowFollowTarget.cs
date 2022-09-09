@@ -18,12 +18,14 @@ public class ArrowFollowTarget : MonoBehaviour
     private Vector2 targetPosition;
 
 
-    void FixedUpdated()
+    private void FixedUpdate()
     {
+        /*
         FollowTheTarget();
+    */
     }
-    
-    void FollowTheTarget() // When the player will press the button the arrow will follow the last position of the target;
+     
+    public void FollowTheTarget() // When the player will press the button the arrow will follow the last position of the target;
     {
         Debug.Log("Here");
         

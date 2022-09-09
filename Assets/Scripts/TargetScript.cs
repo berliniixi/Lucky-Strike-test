@@ -36,7 +36,6 @@ public class TargetScript : MonoBehaviour
             
         }
         _targetRigidbody2D.velocity = new Vector2(targetSpeed, 0f);
-
     }
     
     void OnTriggerEnter2D(Collider2D other) // if the target collide with the boxes makes the speed negative to move to the other direction
@@ -45,6 +44,5 @@ public class TargetScript : MonoBehaviour
         {
             targetSpeed = -targetSpeed;
         }
-
     }
 }
