@@ -8,7 +8,7 @@ public class ArrowSpawnerScript : MonoBehaviour // Script for the Instantiation 
     public bool arrowIsInstantiate = false;
     public void ArrowInstantiate()
     {
-        if (arrowIsInstantiate)
+        if (arrowIsInstantiate) // stop arrow instantiation 
         {
             return;
         }
