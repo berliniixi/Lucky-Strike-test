@@ -15,12 +15,12 @@ public class ButtonScript : MonoBehaviour
     
     [Header("Reference to other Scripts")]
     private ArrowFollowTarget _arrowFollowTarget;
-    
+    [SerializeField] private ArrowSpawnerScript _arrowSpawnerScript;    // 
+
     
     void Start()
     {
         _targetScript = FindObjectOfType<TargetScript>();
-        _arrowFollowTarget = FindObjectOfType<ArrowFollowTarget>();
     }
     
     public void PressToStopTarget() // Button.OnClick => Method that when the player press the button it will stop the target and the arrow will go to the target position;
@@ -28,9 +28,16 @@ public class ButtonScript : MonoBehaviour
         _targetScript.isPressed = true; // Stop the target from movement
     }
 
-    public void PressToShootTarget() // Button.OnClick => The arrow must go to the position of the target;
+    private void PressToShootTarget() // Button.OnClick => The arrow must go to the position of the target;
     {
         _arrowFollowTarget.allowArrowHit = true;
         _arrowFollowTarget.FixedUpdate();// Start the arrow going to the target;    
+    }
+
+    public void PressToSpawn()
+    {
+        _arrowSpawnerScript.ArrowInstantiate();
+        _arrowFollowTarget = FindObjectOfType<ArrowFollowTarget>();
+        PressToShootTarget();
     }
 }

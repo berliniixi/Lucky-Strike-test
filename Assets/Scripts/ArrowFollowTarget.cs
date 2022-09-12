@@ -9,18 +9,17 @@ public class ArrowFollowTarget : MonoBehaviour
     [SerializeField] public bool allowArrowHit = false; 
         
     [Header("Arrow Components")]
-    [SerializeField] private Transform Target;
+    private Transform Target;
     private Rigidbody2D _arrowRigidbody2D;
-    private BoxCollider2D _arrowBoxCollider2D;
     private Vector2 arrowPosition; 
     private Vector2 targetPosition;
-
+    private GameObject _rope;
 
     [Header("Reference to other Scripts")] private TargetScript _targetScript;
-
     void Awake()
     {
         _targetScript = GetComponent<TargetScript>();
+        Target = FindObjectOfType<TargetScript>().gameObject.transform;
     }
     
     public void FixedUpdate()
@@ -35,14 +34,20 @@ public class ArrowFollowTarget : MonoBehaviour
 
       void FollowTheTarget() // arrow will follow the last position of the target;
     {
-        /*if (!allowArrowHit)
-        {
-            Debug.Log("allowArrowHit : " + allowArrowHit );
-            return;
-        }*/
         arrowPosition = transform.position;
         targetPosition = Target.position;
         transform.position = Vector2.Lerp(arrowPosition, targetPosition, arrowSpeed * Time.deltaTime);
         /*transform.up = Target.transform.position - transform.position;*/ // Rotate the LOCAL position on the UP direction from the Target;
     }
+
+      void OnTriggerEnter2D(Collider2D other) // When the arrow collide with the GoalCircle must cut the rope and the bag must fall down;  
+      {
+          if (other.tag == "GoalColliders")
+          {
+              Debug.Log("Collide with arrow");
+              other.GetComponentInChildren<Rigidbody2D>().simulated = enabled;  // It gets the child component of the GaolCircle
+                                                                                // and its enable the simulated to make the rope to has physics 
+
+          }
+      }
 }
