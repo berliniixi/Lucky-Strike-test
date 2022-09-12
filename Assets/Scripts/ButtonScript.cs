@@ -37,6 +37,7 @@ public class ButtonScript : MonoBehaviour
     public void PressToSpawn()
     {
         _arrowSpawnerScript.ArrowInstantiate();
+        _arrowSpawnerScript.arrowIsInstantiate = true; // here must stop the instance of the arrow
         _arrowFollowTarget = FindObjectOfType<ArrowFollowTarget>();
         PressToShootTarget();
     }

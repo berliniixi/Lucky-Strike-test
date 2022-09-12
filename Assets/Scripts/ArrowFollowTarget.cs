@@ -16,9 +16,11 @@ public class ArrowFollowTarget : MonoBehaviour
     private GameObject _rope;
 
     [Header("Reference to other Scripts")] private TargetScript _targetScript;
+    private ArrowSpawnerScript _arrowSpawnerScript;
     void Awake()
     {
         _targetScript = GetComponent<TargetScript>();
+        _arrowSpawnerScript = GetComponent<ArrowSpawnerScript>();
         Target = FindObjectOfType<TargetScript>().gameObject.transform;
     }
     
@@ -46,8 +48,8 @@ public class ArrowFollowTarget : MonoBehaviour
           {
               Debug.Log("Collide with arrow");
               other.GetComponentInChildren<Rigidbody2D>().simulated = enabled;  // It gets the child component of the GaolCircle
-                                                                                // and its enable the simulated to make the rope to has physics 
-
+                                                                    // and its enable the simulated to make the rope to has physics 
+              /*other.GetComponentInChildren<RandomRewards>().CopyData();*/ 
           }
       }
 }

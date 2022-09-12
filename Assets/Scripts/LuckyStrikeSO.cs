@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.IO;
 
 
 [CreateAssetMenu (fileName = "Lucky Strike Rewards" , menuName = ("SO/LuckyStrikeRewards") )]
@@ -22,8 +21,8 @@ public class LuckyStrikeRewards
     public Sprite moneySprite;
     public int exp;
     public Sprite expSprite;
-    public int moves;
-    public Sprite movesSprite;
+    public int energy;
+    public Sprite energySprite;
 }
 
 
