@@ -47,9 +47,10 @@ public class ArrowFollowTarget : MonoBehaviour
           if (other.tag == "GoalColliders")
           {
               Debug.Log("Collide with arrow");
-              other.GetComponentInChildren<Rigidbody2D>().simulated = enabled;  // It gets the child component of the GaolCircle
-                                                                    // and its enable the simulated to make the rope to has physics 
-              other.GetComponentInChildren<RandomRewards>().CopyData(); 
+              other.GetComponentInChildren<Rigidbody2D>().simulated = enabled; // It gets the child component of the GaolCircle
+                                                                                // and its enable the simulated to make the rope to has physics 
+              other.GetComponentInChildren<RandomRewards>().AppendTheWinningRewards();
           }
       }
+      
 }

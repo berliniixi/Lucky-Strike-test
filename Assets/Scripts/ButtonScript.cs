@@ -15,7 +15,7 @@ public class ButtonScript : MonoBehaviour
     
     [Header("Reference to other Scripts")]
     private ArrowFollowTarget _arrowFollowTarget;
-    [SerializeField] private ArrowSpawnerScript _arrowSpawnerScript;    // 
+    [SerializeField] private ArrowSpawnerScript _arrowSpawnerScript;   
 
     
     void Start()
