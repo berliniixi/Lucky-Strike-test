@@ -1,31 +1,25 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class RandomRewards : MonoBehaviour
 {
     [SerializeField] private LuckyStrikeSO _luckyStrikeSo;
 
-    public void AppendTheWinningRewards() // calling this methods to the ArrowFollowTarget script 
-    {
-        RandomMethodCollector();
-    }
 
-    public void AppendTheLosingRewards()
-    {
-        test();
-    }
     int RandomGemsPicker() // Randomize the elements that the gems list have 
     {
         int randomGem = Random.Range(0, _luckyStrikeSo.gems.Count); // Picking a random gem
-        LuckyStrikeGems gemsValue = _luckyStrikeSo.gems[randomGem]; 
+        LuckyStrikeGems gemsValue = _luckyStrikeSo.gems[randomGem];
+        string item = gemsValue.itemName;
         Debug.Log("Gems : "+ gemsValue.gems + " " + " From Element : "+ randomGem  + " Sprite : " + gemsValue.gemSprite);
         return gemsValue.gems;
+        
     }
-
+    
     int RandomMoneyPicker() // Randomize the elements that the money list have 
     {
         int randomMoney = Random.Range(0, _luckyStrikeSo.money.Count); // Picking a random value from money 
@@ -51,33 +45,30 @@ public class RandomRewards : MonoBehaviour
     }
     
 
-    void RandomMethodCollector() // Create a method that hold an array of all the methods that randomized their list 
+     public int RandomMethodCollector() // Create a method that hold a List of all the methods that randomized their list 
     {
-        /*List<int> temp = new List<int>();
-        temp.Add(RandomGemsPicker());
-        temp.Add(RandomExpPicker());
-        temp.Add(RandomMoneyPicker());
-        temp.Add(RandomPowerPicker());
-        var index = Random.Range(0, temp.Count);
+        List<int> temp = new List<int>();
+
         //add to sack
+        temp.Add(RandomGemsPicker());
+        /*temp.Add(RandomExpPicker());
+        temp.Add(RandomMoneyPicker());
+        temp.Add(RandomPowerPicker());*/
         
-        //remove from list
-        temp.RemoveAt(index);
-        Debug.Log(temp[index]);
-        Debug.Log(index);*/
+        var index = Random.Range(0, temp.Count);
         
-        var arrayOfMethods = new Int32[] {RandomGemsPicker(), RandomExpPicker(), RandomMoneyPicker(), RandomPowerPicker()};
-        var arrayOfMethodsIndex = Random.Range(0, arrayOfMethods.Length);
-        Debug.Log(arrayOfMethods.Length); // Size of the array
-        Debug.Log(arrayOfMethods[arrayOfMethodsIndex]); // Element from the list 
+        // last element
+        var lastElement = temp.Last();
 
+        Debug.Log(lastElement +  " Last element");
+        
+        //show value (Value when the player hit the sack)
+  
+        Debug.Log(temp[index] + " Value");
+
+         int result = temp[index];
+
+         return result;
     }
-
-    void test()
-    {
-        var arrayOfMethods = new Int32[] {RandomGemsPicker(), RandomExpPicker(), RandomMoneyPicker(), RandomPowerPicker()};
-        var arrayOfMethodsIndex = Random.Range(0, arrayOfMethods.Length);
-        Debug.Log(arrayOfMethods.Length); // Size of the array
-    }
-
+     
 }

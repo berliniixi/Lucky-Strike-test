@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ShowLosingRewards : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other)
+    // When the Arrow does not collide with any of the target 
+        
+    
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Arrow")
         {
@@ -12,5 +15,5 @@ public class ShowLosingRewards : MonoBehaviour
             other.GetComponentInChildren<RandomRewards>().AppendTheLosingRewards();
             
         }
-    }
+    }*/
 }

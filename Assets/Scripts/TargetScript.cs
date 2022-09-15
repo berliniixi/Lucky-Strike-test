@@ -18,12 +18,7 @@ public class TargetScript : MonoBehaviour
         _targetRigidbody2D = GetComponent<Rigidbody2D>();
         _targetBoxCollider2D = GetComponent<BoxCollider2D>();
     }
-
-    void Start()
-    {
-        Debug.Log(isPressed);
-
-    }
+    
     void FixedUpdate()
     {
         TargetMovement();

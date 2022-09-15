@@ -7,7 +7,8 @@ public class ArrowFollowTarget : MonoBehaviour
     [Header("Arrow Characteristics")] 
     [SerializeField] float arrowSpeed = 3f;
     [SerializeField] public bool allowArrowHit = false; 
-        
+    
+    
     [Header("Arrow Components")]
     private Transform Target;
     private Rigidbody2D _arrowRigidbody2D;
@@ -15,6 +16,8 @@ public class ArrowFollowTarget : MonoBehaviour
     private Vector2 targetPosition;
     private GameObject _rope;
 
+    
+    
     [Header("Reference to other Scripts")] private TargetScript _targetScript;
     private ArrowSpawnerScript _arrowSpawnerScript;
     void Awake()
@@ -28,7 +31,6 @@ public class ArrowFollowTarget : MonoBehaviour
     {
         if (!allowArrowHit)
         {
-            Debug.Log("allowArrowHit : " + allowArrowHit );
             return;
         }
         FollowTheTarget();    
@@ -46,10 +48,8 @@ public class ArrowFollowTarget : MonoBehaviour
       {
           if (other.tag == "GoalColliders")
           {
-              Debug.Log("Collide with arrow");
               other.GetComponentInChildren<Rigidbody2D>().simulated = enabled; // It gets the child component of the GaolCircle
                                                                                 // and its enable the simulated to make the rope to has physics 
-              other.GetComponentInChildren<RandomRewards>().AppendTheWinningRewards();
           }
       }
       
