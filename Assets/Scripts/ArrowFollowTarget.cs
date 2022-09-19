@@ -6,8 +6,7 @@ public class ArrowFollowTarget : MonoBehaviour
 {
     [Header("Arrow Characteristics")] 
     [SerializeField] float arrowSpeed = 3f;
-    [SerializeField] public bool allowArrowHit = false; 
-    
+     public bool allowArrowHit = false;
     
     [Header("Arrow Components")]
     private Transform Target;
@@ -15,16 +14,18 @@ public class ArrowFollowTarget : MonoBehaviour
     private Vector2 arrowPosition; 
     private Vector2 targetPosition;
     private GameObject _rope;
-
     
-    
-    [Header("Reference to other Scripts")] private TargetScript _targetScript;
+    [Header("Reference to other Scripts")] 
+    private TargetScript _targetScript;
     private ArrowSpawnerScript _arrowSpawnerScript;
+    private ShowLosingRewards _showLosingRewards;
+    
     void Awake()
     {
-        _targetScript = GetComponent<TargetScript>();
+        _targetScript = GetComponent<TargetScript>(); 
         _arrowSpawnerScript = GetComponent<ArrowSpawnerScript>();
         Target = FindObjectOfType<TargetScript>().gameObject.transform;
+        
     }
     
     public void FixedUpdate()
@@ -40,17 +41,18 @@ public class ArrowFollowTarget : MonoBehaviour
     {
         arrowPosition = transform.position;
         targetPosition = Target.position;
-        transform.position = Vector2.Lerp(arrowPosition, targetPosition, arrowSpeed * Time.deltaTime);
+        transform.position = Vector2.Lerp(arrowPosition, targetPosition,  arrowSpeed * Time.deltaTime);
         /*transform.up = Target.transform.position - transform.position;*/ // Rotate the LOCAL position on the UP direction from the Target;
     }
 
       void OnTriggerEnter2D(Collider2D other) // When the arrow collide with the GoalCircle must cut the rope and the bag must fall down;  
       {
+
           if (other.tag == "GoalColliders")
           {
-              other.GetComponentInChildren<Rigidbody2D>().simulated = enabled; // It gets the child component of the GaolCircle
-                                                                                // and its enable the simulated to make the rope to has physics 
+              other.GetComponentInChildren<Rigidbody2D>().simulated = enabled; //  It gets the child component of the GaolCircle
+                                            // and its enable the simulated to make the rope to has physics 
           }
+
       }
-      
 }

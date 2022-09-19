@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 
 public class ShowRewardScript : MonoBehaviour
@@ -16,27 +12,47 @@ public class ShowRewardScript : MonoBehaviour
     RandomRewards _randomRewards;
     void Start()
     {
-        showRewards.text = String.Empty;
-        showRewards1.text = String.Empty;
-        showRewards2.text = String.Empty; 
+        showRewards.gameObject.SetActive(false);
+        showRewards1.gameObject.SetActive(false);
+        showRewards2.gameObject.SetActive(false);
         _randomRewards = GetComponent<RandomRewards>();
     }
-    
-    
-    void OnTriggerEnter2D(Collider2D other) //>> It collide but does not make any actions e.c Show the values of the bags <<
+
+    public void EnableAllText() // Make the rewards appear
     {
+        showRewards.gameObject.SetActive(true);
+        showRewards1.gameObject.SetActive(true);
+        showRewards2.gameObject.SetActive(true);
+    }
+    public void OnTriggerEnter2D(Collider2D other) //When the bag collide with ground it show the reward
+    {
+
+        //_randomRewards.GetReandomRewards();
+            
+        //var index = Random.Range(0, 4);
+        
+        
+        showRewards.text = _randomRewards.RandomMethodCollector().ToString();
+        showRewards1.text = _randomRewards.RandomMethodCollector().ToString();
+        showRewards2.text = _randomRewards.RandomMethodCollector().ToString();
+        
+
         if (other.tag == "Bag")
         {
-            showRewards.text = _randomRewards.RandomMethodCollector().ToString();
+            showRewards.gameObject.SetActive(true);
+            Debug.LogError(showRewards);
         }
         else if(other.tag == "Bag1")
         {
-           showRewards1.text = _randomRewards.RandomMethodCollector().ToString();
+            showRewards1.gameObject.SetActive(true);
+            Debug.LogError(showRewards1);
         } 
         else if (other.tag == "Bag2")
         {
-            showRewards2.text = _randomRewards.RandomMethodCollector().ToString();
+            showRewards2.gameObject.SetActive(true);
+            Debug.LogError(showRewards2);
         }
+        
     }
     
 }

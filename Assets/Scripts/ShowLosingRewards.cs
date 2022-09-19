@@ -1,19 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShowLosingRewards : MonoBehaviour
 {
-    // When the Arrow does not collide with any of the target 
-        
+    private ShowRewardScript _showRewardScript;
+    private RandomRewards _randomRewards;
     
-    /*void OnTriggerEnter2D(Collider2D other)
+    /*
+    private ArrowFollowTarget _arrowFollowTarget;
+    */
+    void Start()
+    {
+        _showRewardScript = FindObjectOfType<ShowRewardScript>(); 
+        _randomRewards = FindObjectOfType<RandomRewards>();
+        /*
+        _arrowFollowTarget = GetComponent<ArrowFollowTarget>();
+        */
+
+    }
+    
+    // When the Arrow does not collide with any of the target (Collide with the square) then do the follow 
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Arrow")
         {
-            Debug.Log("Collide with square");
-            other.GetComponentInChildren<RandomRewards>().AppendTheLosingRewards();
-            
+            StartCoroutine(ShowLostRewards());
+            Debug.LogError("You lost");
         }
-    }*/
+    }
+    
+    IEnumerator ShowLostRewards() // It show the rewards with 2 sec delay, when the player miss the target 
+    {
+        
+        yield return new WaitForSeconds(2);
+        _showRewardScript.EnableAllText();
+    }
 }

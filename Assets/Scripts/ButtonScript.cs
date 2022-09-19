@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
+using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
@@ -15,12 +15,15 @@ public class ButtonScript : MonoBehaviour
     
     [Header("Reference to other Scripts")]
     private ArrowFollowTarget _arrowFollowTarget;
-    [SerializeField] private ArrowSpawnerScript _arrowSpawnerScript;   
-
+    [SerializeField] private ArrowSpawnerScript _arrowSpawnerScript;
+    private RandomRewards _randomRewards;
+    private ShowRewardScript _showRewardScript;
     
     void Start()
     {
         _targetScript = FindObjectOfType<TargetScript>();
+        _randomRewards = GetComponent<RandomRewards>();
+        _showRewardScript = GetComponent<ShowRewardScript>();
     }
     
     public void PressToStopTarget() // Button.OnClick => Method that when the player press the button it will stop the target and the arrow will go to the target position;
@@ -41,4 +44,10 @@ public class ButtonScript : MonoBehaviour
         _arrowFollowTarget = FindObjectOfType<ArrowFollowTarget>();
         PressToShootTarget();
     }
+    
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+    } 
 }

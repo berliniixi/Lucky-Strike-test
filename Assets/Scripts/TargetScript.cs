@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetScript : MonoBehaviour
 {
     [Header("Target Characteristics")] 
-    [SerializeField] private float targetSpeed = 2f;
+    [SerializeField] public float targetSpeed = 2f;
     [SerializeField] public bool isPressed = false; 
     
     
@@ -23,7 +23,7 @@ public class TargetScript : MonoBehaviour
     {
         TargetMovement();
     }
-
+    
     void TargetMovement()       // Move the target on x-axis;
     {
         if (isPressed)
@@ -34,11 +34,13 @@ public class TargetScript : MonoBehaviour
         _targetRigidbody2D.velocity = new Vector2(targetSpeed, 0f);
     }
     
+    
     void OnTriggerEnter2D(Collider2D other) // if the target collide with the boxes makes the speed negative to move to the other direction
     {
         if (other.tag == "Colliders")
         {
             targetSpeed = -targetSpeed;
+            Debug.LogError(targetSpeed);
         }
     }
 }
