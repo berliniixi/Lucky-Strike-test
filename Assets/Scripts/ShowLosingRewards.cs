@@ -24,14 +24,17 @@ public class ShowLosingRewards : MonoBehaviour
     {
         if (other.tag == "Arrow")
         {
+            //added the below 3 lines
+            _showRewardScript.showRewards.text = _randomRewards.RandomMethodCollector().ToString();
+            _showRewardScript.showRewards1.text = _randomRewards.RandomMethodCollector().ToString();
+            _showRewardScript.showRewards2.text = _randomRewards.RandomMethodCollector().ToString();
             StartCoroutine(ShowLostRewards());
-            Debug.LogError("You lost");
+           // Debug.LogError("You lost");
         }
     }
     
     IEnumerator ShowLostRewards() // It show the rewards with 2 sec delay, when the player miss the target 
     {
-        
         yield return new WaitForSeconds(2);
         _showRewardScript.EnableAllText();
     }

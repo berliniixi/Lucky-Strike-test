@@ -15,7 +15,7 @@ public class RandomRewards : MonoBehaviour
         int randomGem = Random.Range(0, _luckyStrikeSo.gems.Count); // Picking a random gem
         LuckyStrikeGems gemsValue = _luckyStrikeSo.gems[randomGem];
         randomGem = Random.Range(0, _luckyStrikeSo.gems.Count);
-        Debug.Log("Gems : " + gemsValue.gems + " " + " From Element : " + randomGem + "" + " Sprite : " + gemsValue.gemSprite);
+       // Debug.Log("Gems : " + gemsValue.gems + " " + " From Element : " + randomGem + "" + " Sprite : " + gemsValue.gemSprite);
         
         return gemsValue.gems;
     }
@@ -24,7 +24,7 @@ public class RandomRewards : MonoBehaviour
     {
         int randomMoney = Random.Range(0, _luckyStrikeSo.money.Count); // Picking a random value from money 
         LuckyStrikeMoney moneyValue = _luckyStrikeSo.money[randomMoney]; 
-        Debug.Log("Money : "+ moneyValue.money + " " + " From Element : " + randomMoney  + " Sprite : " + moneyValue.moneySprite);
+      //  Debug.Log("Money : "+ moneyValue.money + " " + " From Element : " + randomMoney  + " Sprite : " + moneyValue.moneySprite);
         
         return moneyValue.money;
     }
@@ -33,7 +33,7 @@ public class RandomRewards : MonoBehaviour
     {
         int randomPower = Random.Range(0, _luckyStrikeSo.power.Count); // Picking a random value from Power
         LuckyStrikePower powerValue = _luckyStrikeSo.power[randomPower]; 
-        Debug.Log("Power : "+ powerValue.power + " " + " From Element : " + randomPower + " Sprite : " +powerValue.powerSprite);
+       // Debug.Log("Power : "+ powerValue.power + " " + " From Element : " + randomPower + " Sprite : " +powerValue.powerSprite);
         
         return powerValue.power;
     }
@@ -42,7 +42,7 @@ public class RandomRewards : MonoBehaviour
     {
         int randomExp = Random.Range(0, _luckyStrikeSo.exp.Count); // Picking a random value from Exp
         LuckyStrikeExp expValue = _luckyStrikeSo.exp[randomExp]; 
-        Debug.Log("Exp : "+ expValue.exp + " " + " From Element : " + randomExp + " Sprite : " + expValue.expSprite);
+      //  Debug.Log("Exp : "+ expValue.exp + " " + " From Element : " + randomExp + " Sprite : " + expValue.expSprite);
         
         return expValue.exp;
     }
@@ -51,7 +51,7 @@ public class RandomRewards : MonoBehaviour
     {
         int randomLives = Random.Range(0, _luckyStrikeSo.lives.Count); // Picking a random value from Lives
         LuckyStrikeLives livesValue = _luckyStrikeSo.lives[randomLives]; 
-        Debug.Log("Lives : "+ livesValue.lives + " " + " From Element : " + randomLives + " Sprite : " + livesValue.livesSprite);
+       // Debug.Log("Lives : "+ livesValue.lives + " " + " From Element : " + randomLives + " Sprite : " + livesValue.livesSprite);
         
         return livesValue.lives;
     }
@@ -79,7 +79,7 @@ public class RandomRewards : MonoBehaviour
         
         //show value (Value when the player hit the sack)
   
-        Debug.Log(temp[i] + " Value");
+       // Debug.Log(temp[i] + " Value");
         
         int result = temp[i];
         

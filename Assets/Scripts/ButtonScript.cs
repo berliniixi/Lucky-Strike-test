@@ -19,6 +19,19 @@ public class ButtonScript : MonoBehaviour
     private RandomRewards _randomRewards;
     private ShowRewardScript _showRewardScript;
     
+    
+    int counter = 0;
+    private static bool _created = false;
+
+   /*  private void Awake()
+    {
+        if (!_created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            _created = true;
+        }
+    } */
+
     void Start()
     {
         _targetScript = FindObjectOfType<TargetScript>();
@@ -46,8 +59,10 @@ public class ButtonScript : MonoBehaviour
     }
     
 
-    public void RestartGame()
+    /* public void RestartGame()
     {
         SceneManager.LoadScene("SampleScene");
-    } 
+        counter++;
+        Debug.Log(counter);
+    } */
 }

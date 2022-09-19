@@ -10,11 +10,15 @@ public class ShowRewardScript : MonoBehaviour
      public TextMeshProUGUI showRewards2;
 
     RandomRewards _randomRewards;
+
+    int rewards;
+
     void Start()
     {
         showRewards.gameObject.SetActive(false);
         showRewards1.gameObject.SetActive(false);
         showRewards2.gameObject.SetActive(false);
+        rewards = PlayerPrefs.GetInt("Rewards");
         _randomRewards = GetComponent<RandomRewards>();
     }
 
@@ -45,6 +49,8 @@ public class ShowRewardScript : MonoBehaviour
         else if(other.tag == "Bag1")
         {
             showRewards1.gameObject.SetActive(true);
+            PlayerPrefs.SetInt("Rewards", rewards);
+            Debug.Log(rewards);
             Debug.LogError(showRewards1);
         } 
         else if (other.tag == "Bag2")

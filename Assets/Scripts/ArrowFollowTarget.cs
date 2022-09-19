@@ -50,7 +50,7 @@ public class ArrowFollowTarget : MonoBehaviour
 
           if (other.tag == "GoalColliders")
           {
-              other.GetComponentInChildren<Rigidbody2D>().simulated = enabled; //  It gets the child component of the GaolCircle
+              other.GetComponentInChildren<Rigidbody2D>().simulated = enabled; //  It gets the child component of the GoalCircle
                                             // and its enable the simulated to make the rope to has physics 
           }
 
