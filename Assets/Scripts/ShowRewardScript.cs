@@ -9,16 +9,15 @@ public class ShowRewardScript : MonoBehaviour
      public TextMeshProUGUI showRewards1;
      public TextMeshProUGUI showRewards2;
 
-    RandomRewards _randomRewards;
+     RandomRewards _randomRewards;
 
-    int rewards;
+     int rewards = 0;
 
     void Start()
     {
         showRewards.gameObject.SetActive(false);
         showRewards1.gameObject.SetActive(false);
         showRewards2.gameObject.SetActive(false);
-        rewards = PlayerPrefs.GetInt("Rewards");
         _randomRewards = GetComponent<RandomRewards>();
     }
 
@@ -28,14 +27,14 @@ public class ShowRewardScript : MonoBehaviour
         showRewards1.gameObject.SetActive(true);
         showRewards2.gameObject.SetActive(true);
     }
+
     public void OnTriggerEnter2D(Collider2D other) //When the bag collide with ground it show the reward
     {
 
         //_randomRewards.GetReandomRewards();
             
         //var index = Random.Range(0, 4);
-        
-        
+            
         showRewards.text = _randomRewards.RandomMethodCollector().ToString();
         showRewards1.text = _randomRewards.RandomMethodCollector().ToString();
         showRewards2.text = _randomRewards.RandomMethodCollector().ToString();
@@ -44,22 +43,35 @@ public class ShowRewardScript : MonoBehaviour
         if (other.tag == "Bag")
         {
             showRewards.gameObject.SetActive(true);
-            Debug.LogError(showRewards);
+            SaveDataRewards(showRewards);
+            Debug.Log(showRewards);
         }
         else if(other.tag == "Bag1")
         {
             showRewards1.gameObject.SetActive(true);
-            PlayerPrefs.SetInt("Rewards", rewards);
-            Debug.Log(rewards);
-            Debug.LogError(showRewards1);
+            SaveDataRewards(showRewards1);
+            //int.TryParse(showRewards1.text, out rewards);
+            //rewards = int.Parse(showRewards1.text);
+            //PlayerPrefs.SetInt("Rewards", rewards);
+            //PlayerPrefs.GetInt("Rewards", rewards);
+            //Debug.Log(rewards);
+            Debug.Log(showRewards1);
         } 
         else if (other.tag == "Bag2")
         {
             showRewards2.gameObject.SetActive(true);
-            Debug.LogError(showRewards2);
+            SaveDataRewards(showRewards2);
+            Debug.Log(showRewards2);
         }
-        
     }
-    
+
+    void SaveDataRewards(TextMeshProUGUI rewardText)
+    {
+        int.TryParse(showRewards1.text, out rewards);
+        //rewards = int.Parse(rewardText.text);
+        PlayerPrefs.SetInt("Rewards", rewards);
+        PlayerPrefs.GetInt("Rewards", rewards);
+        Debug.Log(rewards);
+    }
 }
 

@@ -12,11 +12,11 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!_created)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            _created = true;
-        }
+         if (!_created)
+         {
+             DontDestroyOnLoad(this.gameObject);
+             _created = true;
+         } 
     }
 
     private void Start()
@@ -40,14 +40,8 @@ public class MainManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene("SampleScene");
-        Rounds++;
-        //Rounds=1;
+        //Rounds++;
+        Rounds=1;
         Debug.Log(Rounds);
     }
-
-    public void SaveCounter()
-    {
-        PlayerPrefs.SetInt("savedcounter", counter);
-    }
-
 }
